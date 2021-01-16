@@ -1,0 +1,13 @@
+<div *ngIf="contentText.text">
+  <div class="popup">
+    <div class="popup__block">
+      <div class="example-button-container" class="popup__close" (click)="closePopup()">
+        <button mat-mini-fab color="warn">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+      <div class="popup__title">{{contentText.title}}</div>
+      <div class="popup__text">{{contentText.text}}</div>
+    </div>
+  </div>
+</div>

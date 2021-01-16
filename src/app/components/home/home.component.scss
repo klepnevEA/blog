@@ -1,0 +1,13 @@
+.posts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.posts__item {
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}

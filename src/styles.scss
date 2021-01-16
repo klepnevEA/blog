@@ -1,1 +1,94 @@
-/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 15px 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+
+  &_flex {
+    display: flex;
+    flex: 1 1 auto;
+  }
+
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    width: 200px;
+    padding-right: 15px;
+  }
+
+  &__main-content {
+    flex: 1 1 auto;
+  }
+}
+
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin-left: 10px;
+  }
+
+  &__link {
+    cursor:pointer;
+    outline: none;
+  }
+}
+
+app-layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+h1.title {
+  padding: 10px 0;
+  font-size: 30px;
+}
+
+:focus {
+  outline: none;
+}
+
+
+mat-card {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  padding: 0 !important;
+}
