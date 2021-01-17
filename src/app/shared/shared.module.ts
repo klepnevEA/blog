@@ -5,12 +5,11 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-import { PopupComponent } from './components/popup/popup.component';
 import {MatIconModule} from '@angular/material/icon';
-import { MenuComponent } from './components/menu/menu.component';
-import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
 
+import { MenuComponent } from './components/menu/menu.component';
+import { PopupComponent } from './components/popup/popup.component';
 @NgModule({
   declarations: [PopupComponent, MenuComponent],
   imports: [
