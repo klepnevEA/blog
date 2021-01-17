@@ -50,25 +50,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   align-items: center;
 }
 
-.nav {
-  &__list {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__item {
-    margin-left: 10px;
-  }
-
-  &__link {
-    cursor:pointer;
-    outline: none;
-  }
-}
-
 app-layout {
   display: flex;
   flex-direction: column;

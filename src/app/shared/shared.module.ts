@@ -7,9 +7,12 @@ import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { PopupComponent } from './components/popup/popup.component';
 import {MatIconModule} from '@angular/material/icon';
+import { MenuComponent } from './components/menu/menu.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [PopupComponent],
+  declarations: [PopupComponent, MenuComponent],
   imports: [
     HttpClientModule,
     MatToolbarModule,
@@ -17,7 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-    CommonModule],
+    CommonModule,
+    RouterModule],
   exports: [
     HttpClientModule,
     CommonModule,
@@ -26,7 +30,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-    PopupComponent
+    PopupComponent,
+    MenuComponent
   ]
 })
 export class SharedModule { }

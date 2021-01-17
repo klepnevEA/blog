@@ -11,10 +11,10 @@
             <a [routerLink]="['/']" mat-button color="primary">На главную</a>
           </li>
           <li class="admin-menu__item">
-            <a [routerLink]="['/admin', 'dashboard']" mat-button color="primary">Главная</a>
+            <a [routerLink]="['/admin', 'dashboard']" [disabled]="!this.authService.isLogin" mat-button color="primary">Главная</a>
           </li>
           <li class="admin-menu__item">
-            <a [routerLink]="['/admin', 'create']" mat-button color="primary">Создать</a>
+            <a [routerLink]="['/admin', 'create']" [disabled]="!this.authService.isLogin" mat-button color="primary">Создать</a>
           </li>
           <li class="admin-menu__item">
             <a href="" mat-button color="primary" (click)="logout($event)">Выйти</a>

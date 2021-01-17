@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUser } from 'src/app/shared/interfaces';
-import { AuthService } from 'src/app/shared/services/auth.servises';
+import { AuthService } from 'src/app/shared/services/auth.services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,6 +20,7 @@ export class LoginPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.form = new FormGroup({
       email: new FormControl(null, [
         Validators.email,
@@ -31,6 +32,7 @@ export class LoginPageComponent implements OnInit {
       ])
     })
   }
+
 
   submitForm() {
     if (this.form.invalid) {
@@ -44,9 +46,9 @@ export class LoginPageComponent implements OnInit {
       }
 
       this.authService.login(user).subscribe(()=> {
-        this.form.reset()
-        this.router.navigate(['/admin', 'dashboard'])
-        this.authService.submitetd = false
+          this.form.reset()
+          this.router.navigate(['/admin', 'dashboard'])
+          this.authService.submitetd = false
       }), () => {
         this.authService.submitetd = false
       }

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { IAuthResponse, IContentPopup, IUser } from '../interfaces';
-import { environment } from './../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable()
@@ -11,6 +11,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   public submitetd: boolean = false
+  public isLogin: string | null = localStorage.getItem('isLogin')
 
   get token(): any {
     const expDate = new Date(
@@ -32,6 +33,7 @@ export class AuthService {
       );
       localStorage.setItem('firebase-token', response.idToken);
       localStorage.setItem('firebase-token-exp', expDate.toString());
+      localStorage.setItem('isLogin', 'true');
     } else {
       localStorage.clear();
     }
@@ -67,12 +69,14 @@ export class AuthService {
         tap(this.setToken),
         catchError((err) => {
           return this.showError(err);
-        })
+        }),
+        tap(() => this.isLogin = localStorage.getItem('isLogin'))
       );
   }
 
   logout() {
     this.setToken(null);
+    this.isLogin = localStorage.getItem('isLogin')
   }
 
   isAuth(): boolean {

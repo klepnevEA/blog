@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IContentPopup } from '../../interfaces';
-import { AuthService } from '../../services/auth.servises';
+import { AuthService } from '../../services/auth.services';
 
 @Component({
   selector: 'app-popup',
@@ -9,7 +9,9 @@ import { AuthService } from '../../services/auth.servises';
 })
 export class PopupComponent {
 
-  constructor(public authService: AuthService) {}
+  constructor(
+    public authService: AuthService
+  ) {}
 
   @Input() contentText!:IContentPopup
 

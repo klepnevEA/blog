@@ -3,16 +3,7 @@
     <div class="container">
       <header class="header">
         <div [routerLink]="['/']" class="title">Мой супер блог</div>
-        <nav class="nav">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <span class="nav__link" [routerLink]="['/']">Главная</span>
-            </li>
-            <li class="nav__item">
-              <span class="nav__link" [routerLink]="['/admin']">Админка</span>
-            </li>
-          </ul>
-        </nav>
+        <app-menu></app-menu>
       </header>
     </div>
   </mat-toolbar>

@@ -1,0 +1,21 @@
+
+.nav {
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin-left: 15px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    cursor:pointer;
+    outline: none;
+  }
+}

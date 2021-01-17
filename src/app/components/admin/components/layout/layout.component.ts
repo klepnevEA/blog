@@ -1,26 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/services/auth.servises';
+import { AfterViewChecked, Component, OnChanges, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.services';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  styleUrls: ['./layout.component.scss'],
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent {
 
   constructor(
     private router: Router,
-    private auth: AuthService
-    ) { }
-
-  ngOnInit(): void {
-  }
+    public authService: AuthService,
+    public route: ActivatedRoute
+  ) {}
 
   logout(event: Event) {
-    event.preventDefault()
-    this.auth.logout()
-    this.router.navigate(['/admin', 'login'])
+    event.preventDefault();
+    this.authService.logout();
+    this.router.navigate(['/admin', 'login']);
   }
-
 }

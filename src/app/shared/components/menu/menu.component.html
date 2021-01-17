@@ -1,0 +1,13 @@
+<nav class="nav">
+  <ul class="nav__list">
+    <li class="nav__item">
+      <span class="nav__link" [routerLink]="['/']">Главная</span>
+    </li>
+    <li class="nav__item">
+      <div *ngIf="this.authService.isLogin else loggedOut" class="nav__link" [routerLink]="['/admin']">Админка <mat-icon>sentiment_very_satisfied</mat-icon></div>
+      <ng-template #loggedOut>
+        <div class="nav__link" [routerLink]="['/admin']">Админка <mat-icon>sentiment_very_dissatisfied</mat-icon></div>
+      </ng-template>
+    </li>
+  </ul>
+</nav>
