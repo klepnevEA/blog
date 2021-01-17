@@ -7,13 +7,14 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateComponent } from './components/create/create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from 'src/app/shared/services/auth.guard';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
   declarations: [LayoutComponent, LoginPageComponent, DashboardComponent, CreateComponent],
   imports: [
-
-  SharedModule,
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([
@@ -27,7 +28,9 @@ import { AuthGuard } from 'src/app/shared/services/auth.guard';
       }
     ])
   ],
-  exports: [RouterModule],
+  exports: [
+    RouterModule,
+  ],
   providers: []
 
 })

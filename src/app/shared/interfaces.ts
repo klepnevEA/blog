@@ -19,3 +19,11 @@ export interface IContentPopup {
   title: string,
   text: string
 }
+
+export interface IPost {
+  id?: string,
+  title: string,
+  content: string,
+  date: Date,
+  author: string
+}

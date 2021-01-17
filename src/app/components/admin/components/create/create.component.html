@@ -1,1 +1,34 @@
-<p>create works!</p>
+<form class="post-form" [formGroup]="form" (ngSubmit)="addPost()">
+  <h1 class="title">Новый пост</h1>
+
+  <mat-form-field class="post-form__field">
+    <mat-label>Заголовок</mat-label>
+    <input type="text" formControlName="title" matInput placeholder="Заголовок">
+    <mat-error>
+      Вы не ввели заголовок поста
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="post-form__field">
+    <mat-label>Контент поста</mat-label>
+    <input type="text" formControlName="content" matInput placeholder="Контент">
+    <mat-error>
+      Напишите чтонибудь!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="post-form__field">
+    <mat-label>Автор</mat-label>
+    <input type="text" formControlName="author" matInput placeholder="автор">
+    <mat-error>
+      Кто ватор?
+    </mat-error>
+  </mat-form-field>
+
+  <div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">
+      Создать
+    </button>
+  </div>
+
+</form>
