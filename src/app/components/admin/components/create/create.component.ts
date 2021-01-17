@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IPost } from 'src/app/shared/interfaces';
-
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -40,5 +40,11 @@ export class CreateComponent implements OnInit {
         date: new Date()
       }
   }
+
+
+  editorConfig: AngularEditorConfig = {
+    editable: true
+  };
+
 
 }

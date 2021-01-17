@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { PopupComponent } from './components/popup/popup.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 @NgModule({
   declarations: [PopupComponent, MenuComponent],
   imports: [
@@ -20,7 +21,9 @@ import { PopupComponent } from './components/popup/popup.component';
     MatInputModule,
     MatIconModule,
     CommonModule,
-    RouterModule],
+    RouterModule,
+    AngularEditorModule
+    ],
   exports: [
     HttpClientModule,
     CommonModule,
@@ -30,7 +33,8 @@ import { PopupComponent } from './components/popup/popup.component';
     MatInputModule,
     MatIconModule,
     PopupComponent,
-    MenuComponent
+    MenuComponent,
+    AngularEditorModule
   ]
 })
 export class SharedModule { }

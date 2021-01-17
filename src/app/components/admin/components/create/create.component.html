@@ -9,13 +9,10 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field class="post-form__field">
-    <mat-label>Контент поста</mat-label>
-    <input type="text" formControlName="content" matInput placeholder="Контент">
-    <mat-error>
-      Напишите чтонибудь!
-    </mat-error>
-  </mat-form-field>
+  <div class="post-form__editor">
+    <div>Контент поста</div>
+    <angular-editor formControlName="content" matInput [config]="editorConfig"></angular-editor>
+  </div>
 
   <mat-form-field class="post-form__field">
     <mat-label>Автор</mat-label>
