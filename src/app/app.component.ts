@@ -10,7 +10,6 @@ import { AuthService } from './shared/services/auth.services';
 })
 export class AppComponent {
   constructor(
-    public authService: AuthService,
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer
     ) {}

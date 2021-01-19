@@ -1,4 +1,4 @@
-<div *ngIf="contentText.text">
+<div *ngIf="content?.title">
   <div class="popup">
     <div class="popup__block">
       <div class="example-button-container" class="popup__close" (click)="closePopup()">
@@ -6,8 +6,8 @@
           <mat-icon>clear</mat-icon>
         </button>
       </div>
-      <div class="popup__title">{{contentText.title}}</div>
-      <div class="popup__text">{{contentText.text}}</div>
+      <div class="popup__title">{{content.title}}</div>
+      <div class="popup__text">{{content.text}}</div>
     </div>
   </div>
 </div>

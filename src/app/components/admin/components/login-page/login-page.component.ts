@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUser } from 'src/app/shared/interfaces';
 import { AuthService } from 'src/app/shared/services/auth.services';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -16,6 +16,7 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     public authService: AuthService
   ) { }
 
@@ -28,9 +29,13 @@ export class LoginPageComponent implements OnInit {
       ]),
       password: new FormControl(null, [
         Validators.required,
-        Validators.minLength(1)
+        Validators.minLength(3)
       ])
     })
+
+    // this.route.queryParams.subscribe((params: Params) => {
+    //   this.authService.showPopup$.next({ title: 'Ошибочка', text: 'Введите данный заново' });
+    // })
   }
 
 
@@ -46,7 +51,6 @@ export class LoginPageComponent implements OnInit {
       }
 
       this.authService.login(user).subscribe(()=> {
-          this.form.reset()
           this.router.navigate(['/admin', 'dashboard'])
           this.authService.submitetd = false
       }), () => {

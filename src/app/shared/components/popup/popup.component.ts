@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { catchError } from 'rxjs/operators';
 import { IContentPopup } from '../../interfaces';
 import { AuthService } from '../../services/auth.services';
 
@@ -9,9 +10,18 @@ import { AuthService } from '../../services/auth.services';
 })
 export class PopupComponent {
 
+  public content!: IContentPopup
+
   constructor(
     public authService: AuthService
   ) {}
+
+  ngOnInit(): void {
+    this.authService.showPopup$
+    .subscribe((res)=> {
+      this.content = res
+    })
+  }
 
   @Input() contentText!:IContentPopup
 

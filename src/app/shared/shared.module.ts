@@ -7,10 +7,11 @@ import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import {MatIconModule} from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { PopupComponent } from './components/popup/popup.component';
-import { AngularEditorModule } from '@kolkov/angular-editor';
+
 @NgModule({
   declarations: [PopupComponent, MenuComponent],
   imports: [

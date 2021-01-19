@@ -39,7 +39,7 @@ export class AuthService {
     }
   }
 
-  private showError(err: HttpErrorResponse) {
+  private async showError(err: HttpErrorResponse) {
     let message = err.error.error.message;
     switch (message) {
       case 'INVALID_EMAIL':
@@ -72,6 +72,7 @@ export class AuthService {
         }),
         tap(() => this.isLogin = localStorage.getItem('isLogin'))
       );
+
   }
 
   logout() {
@@ -80,6 +81,6 @@ export class AuthService {
   }
 
   isAuth(): boolean {
-    return !!this.token;
+    return this.token;
   }
 }

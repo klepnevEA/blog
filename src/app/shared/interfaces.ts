@@ -16,8 +16,8 @@ export interface IAuthResponse {
 }
 
 export interface IContentPopup {
-  title: string,
-  text: string
+  title?: string,
+  text?: string
 }
 
 export interface IPost {
@@ -26,4 +26,8 @@ export interface IPost {
   content: string,
   date: Date,
   author: string
+}
+
+export interface IDatabaseResponse {
+  name?: string
 }

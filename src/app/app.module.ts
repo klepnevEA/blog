@@ -1,17 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { MainComponent } from './components/main/main.component';
 import { HomeComponent } from './components/home/home.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { AdminModule } from './components/admin/admin.module';
 import { PostComponent } from './components/post/post.component';
-import { AuthService } from "./shared/services/auth.services";
+import { AuthService } from './shared/services/auth.services';
 import { AuthGuard } from './shared/services/auth.guard';
+import { PostService } from './shared/services/post.services';
+import { AuthInterceptor } from './shared/services/auth.interceptor';
+
+
+const INTERCEPTOR_PROVIRED: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor
+}
 
 @NgModule({
   declarations: [
@@ -19,17 +29,16 @@ import { AuthGuard } from './shared/services/auth.guard';
     MainComponent,
     HomeComponent,
     PostsComponent,
-    PostComponent
-
+    PostComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    AdminModule
+    AdminModule,
   ],
-  providers: [AuthService, AuthGuard],
-  bootstrap: [AppComponent]
+  providers: [AuthService, AuthGuard, PostService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -8,16 +8,16 @@
       <mat-card>
         <ul class="admin-menu">
           <li class="admin-menu__item">
-            <a [routerLink]="['/']" mat-button color="primary">На главную</a>
-          </li>
-          <li class="admin-menu__item">
             <a [routerLink]="['/admin', 'dashboard']" [disabled]="!this.authService.isLogin" mat-button color="primary">Главная</a>
           </li>
           <li class="admin-menu__item">
             <a [routerLink]="['/admin', 'create']" [disabled]="!this.authService.isLogin" mat-button color="primary">Создать</a>
           </li>
           <li class="admin-menu__item">
-            <a href="" mat-button color="primary" (click)="logout($event)">Выйти</a>
+            <a href="" mat-button color="primary" (click)="logout($event)">
+              <span *ngIf="this.authService.isLogin">Выйти</span>
+              <span *ngIf="!this.authService.isLogin">Войти</span>
+            </a>
           </li>
         </ul>
       </mat-card>
