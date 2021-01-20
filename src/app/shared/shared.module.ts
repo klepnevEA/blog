@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import {MatTableModule} from '@angular/material/table'
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { PopupComponent } from './components/popup/popup.component';
@@ -27,7 +28,8 @@ import { PopupComponent } from './components/popup/popup.component';
     RouterModule,
     AngularEditorModule,
     MatTableModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule
 
     ],
   exports: [
@@ -42,7 +44,8 @@ import { PopupComponent } from './components/popup/popup.component';
     MenuComponent,
     AngularEditorModule,
     MatTableModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   ]
 })
 export class SharedModule { }
