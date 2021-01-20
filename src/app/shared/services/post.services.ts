@@ -1,3 +1,4 @@
+import { keyframes } from "@angular/animations";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs';
@@ -22,6 +23,17 @@ export class PostService {
           id: response.name,
           date: new Date(post.date)
         }
+      }))
+  }
+
+  getPosts(): Observable<IPost[]> {
+    return this.http.get(`${environment.database}/posts.json`)
+      .pipe(map((res: {[key: string]: any}) => {
+        return Object.keys(res).map(key=> ({
+          ...res[key],
+          id: key,
+          date: new Date(res[key].date)
+        }))
       }))
   }
 

@@ -57,9 +57,9 @@ app-layout {
   flex: 1 1 auto;
 }
 
-h1.title {
+.title {
   padding: 10px 0;
-  font-size: 30px;
+  font-size: 30px !important;
 }
 
 :focus {

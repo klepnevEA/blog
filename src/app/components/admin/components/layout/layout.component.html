@@ -7,10 +7,10 @@
     <aside class="container__aside">
       <mat-card>
         <ul class="admin-menu">
-          <li class="admin-menu__item">
+          <li class="admin-menu__item" routerLinkActive="admin-menu__item_active">
             <a [routerLink]="['/admin', 'dashboard']" [disabled]="!this.authService.isLogin" mat-button color="primary">Главная</a>
           </li>
-          <li class="admin-menu__item">
+          <li class="admin-menu__item" routerLinkActive="admin-menu__item_active">
             <a [routerLink]="['/admin', 'create']" [disabled]="!this.authService.isLogin" mat-button color="primary">Создать</a>
           </li>
           <li class="admin-menu__item">

@@ -7,9 +7,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateComponent } from './components/create/create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from 'src/app/shared/services/auth.guard';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
-  declarations: [LayoutComponent, LoginPageComponent, DashboardComponent, CreateComponent],
+  declarations: [LayoutComponent, SearchPipe, LoginPageComponent, DashboardComponent, CreateComponent],
   imports: [
     SharedModule,
     FormsModule,
@@ -20,7 +22,8 @@ import { AuthGuard } from 'src/app/shared/services/auth.guard';
           {path: '', redirectTo: '/admin/login', pathMatch: 'full'},
           {path: 'login', component:  LoginPageComponent},
           {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-          {path: 'create', component: CreateComponent, canActivate: [AuthGuard]}
+          {path: 'create', component: CreateComponent, canActivate: [AuthGuard]},
+          {path: 'post/:id/edit', component: EditPostComponent, canActivate: [AuthGuard]}
         ]
       }
     ])

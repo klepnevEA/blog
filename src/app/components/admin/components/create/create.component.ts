@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IPost } from 'src/app/shared/interfaces';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { PostService } from 'src/app/shared/services/post.services';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -11,7 +12,10 @@ import { PostService } from 'src/app/shared/services/post.services';
 export class CreateComponent implements OnInit {
   public form!: FormGroup;
 
-  constructor(private postService: PostService) {}
+  constructor(
+    private postService: PostService,
+    private router: Router,
+    ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -35,6 +39,7 @@ export class CreateComponent implements OnInit {
 
     this.postService.create(post).subscribe(
       ()=> {
+        this.router.navigate(['/admin', 'dashboard'])
         this.form.reset()
       }
     )

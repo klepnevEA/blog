@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
 export class AuthService {
   constructor(private http: HttpClient) { }
 
-  public submitetd: boolean = false
+  public submited: boolean = false
   public isLogin: string | null = localStorage.getItem('isLogin')
 
   get token(): any {
@@ -80,7 +80,7 @@ export class AuthService {
     this.isLogin = localStorage.getItem('isLogin')
   }
 
-  isAuth(): boolean {
-    return this.token;
-  }
+  // isAuth(): boolean {
+  //   return this.token;
+  // }
 }

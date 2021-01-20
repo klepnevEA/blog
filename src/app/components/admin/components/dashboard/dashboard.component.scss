@@ -1,0 +1,23 @@
+.blog-table {
+  width: 100%;
+
+  &__head {
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  &__cell {
+    padding: 5px;
+  }
+
+  &__button {
+    margin-right: 10px;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}

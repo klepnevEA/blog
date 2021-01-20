@@ -38,7 +38,7 @@ const INTERCEPTOR_PROVIRED: Provider = {
     SharedModule,
     AdminModule,
   ],
-  providers: [AuthService, AuthGuard, PostService],
+  providers: [AuthService, AuthGuard, PostService, INTERCEPTOR_PROVIRED],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,1 +1,45 @@
-<p>dashboard works!</p>
+
+  <div *ngIf="posts.length; else loading">
+    <mat-form-field class="example-full-width">
+      <mat-label>Поиск</mat-label>
+      <input type="text" matInput [(ngModel)]="searchStr">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+
+    <table class="blog-table">
+      <tr class="blog-table__head">
+        <td class="blog-table__cell" width="100px">Номер</td>
+        <td class="blog-table__cell" >Название</td>
+        <td class="blog-table__cell" width="150px">Автор</td>
+        <td class="blog-table__cell" width="200px">Дата</td>
+        <td class="blog-table__cell" width="110px"></td>
+      </tr>
+      <tr class="blog-table__bodu" *ngFor="let post of posts | searchPost:searchStr; let index = index">
+        <td class="blog-table__cell">{{index + 1}}</td>
+        <td class="blog-table__cell">{{post.title}}</td>
+        <td class="blog-table__cell">{{post.author}}</td>
+        <td class="blog-table__cell">{{post.date | date: 'medium'}}</td>
+        <td class="blog-table__cell">
+          <div class="blog-table__buttons">
+            <button [routerLink]="['/admin', 'post', post.id, 'edit']" mat-mini-fab color="primary" class="blog-table__button" title="править">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button  mat-mini-fab color="warn" class="blog-table__button" title="удалить">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+
+        </td>
+      </tr>
+    </table>
+    <div *ngIf="!(posts | searchPost:searchStr).length">
+      <div class="title">Ничего не найдено</div>
+    </div>
+  </div>
+<ng-template #loading>
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+
+</ng-template>

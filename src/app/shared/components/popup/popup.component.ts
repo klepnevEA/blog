@@ -27,7 +27,7 @@ export class PopupComponent {
 
   closePopup() {
     this.authService.showPopup$.next({text: '', title: ''})
-    this.authService.submitetd = false
+    this.authService.submited = false
   }
 
 }

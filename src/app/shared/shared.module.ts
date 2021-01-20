@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatIconModule} from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import {MatTableModule} from '@angular/material/table'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { PopupComponent } from './components/popup/popup.component';
@@ -23,7 +25,10 @@ import { PopupComponent } from './components/popup/popup.component';
     MatIconModule,
     CommonModule,
     RouterModule,
-    AngularEditorModule
+    AngularEditorModule,
+    MatTableModule,
+    MatProgressSpinnerModule
+
     ],
   exports: [
     HttpClientModule,
@@ -35,7 +40,9 @@ import { PopupComponent } from './components/popup/popup.component';
     MatIconModule,
     PopupComponent,
     MenuComponent,
-    AngularEditorModule
+    AngularEditorModule,
+    MatTableModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }
