@@ -11,7 +11,7 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
-  declarations: [LayoutComponent, SearchPipe, LoginPageComponent, DashboardComponent, CreateComponent],
+  declarations: [LayoutComponent, SearchPipe, LoginPageComponent, DashboardComponent, CreateComponent, EditPostComponent],
   imports: [
     SharedModule,
     FormsModule,

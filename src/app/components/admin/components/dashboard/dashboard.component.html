@@ -24,7 +24,7 @@
               class="blog-table__button" title="править">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-mini-fab color="warn" class="blog-table__button" title="удалить">
+            <button mat-mini-fab color="warn" class="blog-table__button" title="удалить" (click)=removePosts(post.id)>
               <mat-icon>close</mat-icon>
             </button>
           </div>
@@ -48,5 +48,4 @@
   <div class="loading">
     <mat-spinner></mat-spinner>
   </div>
-
 </ng-template>

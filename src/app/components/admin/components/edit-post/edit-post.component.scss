@@ -1,0 +1,27 @@
+.post-form {
+  width: 100%;
+  max-width: 600px;
+
+  &__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  &__editor {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}

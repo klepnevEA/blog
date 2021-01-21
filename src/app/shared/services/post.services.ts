@@ -14,9 +14,6 @@ export class PostService {
   create(post: IPost): Observable<IPost> {
     return this.http.post(`${environment.database}/posts.json`, post)
       .pipe(
-        tap((res: any)=> {
-          console.log(res)
-        }),
         map((response: IDatabaseResponse) => {
         return {
           ...post,
@@ -34,6 +31,22 @@ export class PostService {
           id: key,
           date: new Date(res[key].date)
         }))
+      }))
+  }
+
+  removePost(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.database}/posts/${id}.json`)
+  }
+
+  getOistById(id: string): Observable<IPost> {
+    return this.http.get<IPost>(`${environment.database}/posts/${id}.json`)
+      .pipe(
+        map((post: IPost) => {
+        return {
+          ...post,
+          id,
+          date: new Date(post.date)
+        }
       }))
   }
 
