@@ -1,6 +1,6 @@
 <div *ngIf="form; else loading">
 
-  <form [formGroup]="form" (nfSubmit)="submit()" class="post-form">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="post-form">
     <h1 class="title">Редактирование поста</h1>
 
     <mat-form-field class="post-form__field">
@@ -10,7 +10,7 @@
 
     <div class="post-form__editor">
       <div>Контент поста</div>
-      <angular-editor formControlName="content" matInput [config]="editorConfig"></angular-editor>
+      <angular-editor formControlName="content" matInput ></angular-editor>
     </div>
 
     <mat-form-field class="post-form__field">
@@ -18,9 +18,20 @@
       <input type="text" formControlName="author" matInput placeholder="автор">
     </mat-form-field>
 
-    <div>
-      <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">
+    <mat-form-field class="post-form__field">
+      <mat-label>Дата</mat-label>
+      <input type="text" formControlName="date" matInput>
+    </mat-form-field>
+
+    <div class="post-form__buttons">
+      <button class="post-form__button" type="submit" mat-raised-button color="primary" [disabled]="form.invalid">
         Сохранить
+      </button>
+      <button class="post-form__button" mat-raised-button color="warn" (click)=removePosts($event,post.id)>
+        Удалить
+      </button>
+      <button class="post-form__button" mat-raised-button color="link" [routerLink]="['/admin', 'dashboard']">
+        Назад
       </button>
     </div>
 

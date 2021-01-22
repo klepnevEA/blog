@@ -38,7 +38,7 @@ export class PostService {
     return this.http.delete<void>(`${environment.database}/posts/${id}.json`)
   }
 
-  getOistById(id: string): Observable<IPost> {
+  getPostById(id: string): Observable<IPost> {
     return this.http.get<IPost>(`${environment.database}/posts/${id}.json`)
       .pipe(
         map((post: IPost) => {
@@ -48,6 +48,11 @@ export class PostService {
           date: new Date(post.date)
         }
       }))
+  }
+
+  editPost(post: IPost) : Observable<IPost> {
+    console.log(post)
+    return this.http.patch<IPost>(`${environment.database}/posts/${post.id}.json`, post)
   }
 
 }

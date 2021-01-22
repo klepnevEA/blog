@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Provider } from '@angular/core';
+import { LOCALE_ID, NgModule, Provider } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import localeRu from '@angular/common/locales/ru';
+import { registerLocaleData } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,7 @@ import { AuthGuard } from './shared/services/auth.guard';
 import { PostService } from './shared/services/post.services';
 import { AuthInterceptor } from './shared/services/auth.interceptor';
 
+registerLocaleData(localeRu, 'ru');
 
 const INTERCEPTOR_PROVIRED: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -38,7 +41,8 @@ const INTERCEPTOR_PROVIRED: Provider = {
     SharedModule,
     AdminModule,
   ],
-  providers: [AuthService, AuthGuard, PostService, INTERCEPTOR_PROVIRED],
+  providers: [AuthService, AuthGuard, PostService, INTERCEPTOR_PROVIRED,
+    {provide: LOCALE_ID, useValue: 'ru'}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

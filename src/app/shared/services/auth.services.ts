@@ -79,8 +79,4 @@ export class AuthService {
     this.setToken(null);
     this.isLogin = localStorage.getItem('isLogin')
   }
-
-  // isAuth(): boolean {
-  //   return this.token;
-  // }
 }
