@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUser } from 'src/app/shared/interfaces';
 import { AuthService } from 'src/app/shared/services/auth.services';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ignoreElements } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',

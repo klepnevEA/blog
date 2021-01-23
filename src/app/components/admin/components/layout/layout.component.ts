@@ -1,5 +1,5 @@
-import { AfterViewChecked, Component, OnChanges, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.services';
 
 @Component({

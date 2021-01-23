@@ -10,13 +10,13 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { MainComponent } from './components/main/main.component';
 import { HomeComponent } from './components/home/home.component';
-import { PostsComponent } from './components/posts/posts.component';
 import { AdminModule } from './components/admin/admin.module';
 import { PostComponent } from './components/post/post.component';
 import { AuthService } from './shared/services/auth.services';
 import { AuthGuard } from './shared/services/auth.guard';
 import { PostService } from './shared/services/post.services';
 import { AuthInterceptor } from './shared/services/auth.interceptor';
+import { PostPageComponent } from './components/post-page/post-page.component';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -31,7 +31,7 @@ const INTERCEPTOR_PROVIRED: Provider = {
     AppComponent,
     MainComponent,
     HomeComponent,
-    PostsComponent,
+    PostPageComponent,
     PostComponent,
   ],
   imports: [
