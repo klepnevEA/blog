@@ -1,7 +1,7 @@
 import { keyframes } from "@angular/animations";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map, tap } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 import { IDatabaseResponse, IPost } from "../interfaces";
@@ -9,7 +9,16 @@ import { IDatabaseResponse, IPost } from "../interfaces";
 @Injectable()
 
 export class PostService {
-  constructor(private http: HttpClient) {}
+
+  public openPopupConfirm$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+  public confirm: Subject<boolean> = new Subject<boolean>()
+
+  constructor(private http: HttpClient) {
+    this.openPopupConfirm$.next(false)
+    this.confirm.subscribe(response => {
+      this.openPopupConfirm$.next(response)
+    })
+  }
 
   create(post: IPost): Observable<IPost> {
     return this.http.post(`${environment.database}/posts.json`, post)
@@ -51,7 +60,6 @@ export class PostService {
   }
 
   editPost(post: IPost) : Observable<IPost> {
-    console.log(post)
     return this.http.patch<IPost>(`${environment.database}/posts/${post.id}.json`, post)
   }
 

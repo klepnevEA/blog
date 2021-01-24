@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { catchError } from 'rxjs/operators';
 import { IContentPopup } from '../../interfaces';
 import { AuthService } from '../../services/auth.services';
 

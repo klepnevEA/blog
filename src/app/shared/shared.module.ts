@@ -14,9 +14,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { PopupComponent } from './components/popup/popup.component';
+import { PopupConfirmComponent } from './components/popup-confirm/popup-confirm.component';
 
 @NgModule({
-  declarations: [PopupComponent, MenuComponent],
+  declarations: [PopupComponent, MenuComponent, PopupConfirmComponent],
   imports: [
     HttpClientModule,
     MatToolbarModule,
@@ -45,7 +46,8 @@ import { PopupComponent } from './components/popup/popup.component';
     AngularEditorModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    PopupConfirmComponent
   ]
 })
 export class SharedModule { }

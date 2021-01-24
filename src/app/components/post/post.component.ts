@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Input } from '@angular/core';
 import { IPost } from 'src/app/shared/interfaces';
 import { PostService } from 'src/app/shared/services/post.services';
 
@@ -8,12 +7,9 @@ import { PostService } from 'src/app/shared/services/post.services';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit {
+export class PostComponent {
 
   @Input() post!: IPost
 
   constructor(private postService: PostService) { }
-
-  ngOnInit(): void {}
-
 }

@@ -1,0 +1,12 @@
+<div *ngIf="openPopup">
+  <div class="popup">
+    <div class="popup__block">
+      <div class="popup__title">Подтвердить действие?</div>
+      <div class="popup__buttons">
+        <button mat-raised-button color="primary" class="popup__button" (click)="confirm(true)">Подтвердить</button>
+        <button mat-raised-button color="warn"  class="popup__button" (click)="confirm(false)">Отменить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
