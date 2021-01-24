@@ -36,10 +36,6 @@ export class LoginPageComponent implements OnInit {
     if(this.authService.isLogin) {
       this.router.navigate(['/admin', 'dashboard'])
     }
-
-    // this.route.queryParams.subscribe(() => {
-    //   this.authService.showPopup$.next({ title: 'Ошибочка', text: 'Введите данный заново' });
-    // })
   }
 
 

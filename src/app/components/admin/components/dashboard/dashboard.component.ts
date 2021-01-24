@@ -1,6 +1,5 @@
-import { CompileShallowModuleMetadata } from '@angular/compiler';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 import { IPost } from 'src/app/shared/interfaces';
 import { PostService } from 'src/app/shared/services/post.services';
@@ -17,11 +16,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public posts: IPost[] = []
   private sub!: Subscription
   private subDelete!: Subscription
-  searchStr = ''
+  private subConfirm!: Subscription
+  public searchStr = ''
   public dataTable!: IPost[]
   public startIndex!: number
   public endIndex!: number
   public paginationStartIndex: number = 10
+  private postId!: string
 
   ngOnInit(): void {
     this.sub = this.postService.getPosts().subscribe(
@@ -29,6 +30,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.posts = posts
       }
     )
+
+    this.subConfirm = this.postService.confirm.subscribe(response => {
+      if(response) {
+        this.subDelete = this.postService.removePost(this.postId).subscribe(()=> {
+          this.posts = this.posts.filter(post => post.id !== this.postId)
+        })
+      }
+    })
   }
 
 
@@ -39,9 +48,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
   removePosts(postId: any) {
-    this.subDelete = this.postService.removePost(postId).subscribe(()=> {
-      this.posts = this.posts.filter(post => post.id !== postId)
-    })
+    this.postService.openPopupConfirm$.next(true)
+    this.postId = postId
   }
 
   ngOnDestroy(): void {
@@ -51,6 +59,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     if(this.subDelete) {
       this.subDelete.unsubscribe()
+    }
+
+    if(this.subConfirm) {
+      this.subConfirm.unsubscribe()
     }
   }
 }

@@ -2,8 +2,7 @@ import { formatDate } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { IPost } from 'src/app/shared/interfaces';
 import { PostService } from './../../../../shared/services/post.services';
@@ -21,12 +20,14 @@ export class EditPostComponent implements OnInit, OnDestroy {
   private editSub!: Subscription
   private sub!: Subscription
   private subDelete!: Subscription
+  private subConfirm!: Subscription
+  private postId!: string
 
   constructor(
     private route: ActivatedRoute,
     private postService: PostService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.sub = this.postService.getPosts().subscribe(
@@ -34,6 +35,16 @@ export class EditPostComponent implements OnInit, OnDestroy {
         this.posts = posts
       }
     )
+
+    this.subConfirm = this.postService.confirm.subscribe(response => {
+      if(response) {
+
+        this.subDelete = this.postService.removePost(this.postId).subscribe(()=> {
+          this.posts = this.posts.filter(post => post.id !== this.postId)
+          this.router.navigate(['/admin', 'dashboard'])
+        })
+      }
+    })
 
 
     this.route.params
@@ -67,11 +78,17 @@ export class EditPostComponent implements OnInit, OnDestroy {
     })
   }
 
+  // removePosts(event: Event, postId: any) {
+  //   event?.preventDefault()
+  //   this.subDelete = this.postService.removePost(postId).subscribe(()=> {
+  //     this.router.navigate(['/admin', 'dashboard'])
+  //   })
+  // }
+
   removePosts(event: Event, postId: any) {
     event?.preventDefault()
-    this.subDelete = this.postService.removePost(postId).subscribe(()=> {
-      this.router.navigate(['/admin', 'dashboard'])
-    })
+    this.postService.openPopupConfirm$.next(true)
+    this.postId = postId
   }
 
   ngOnDestroy(): void {
@@ -85,6 +102,10 @@ export class EditPostComponent implements OnInit, OnDestroy {
 
     if(this.subDelete) {
       this.subDelete.unsubscribe()
+    }
+
+    if(this.subConfirm) {
+      this.subConfirm.unsubscribe()
     }
 
   }
