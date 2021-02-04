@@ -5,12 +5,10 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { IPost } from 'src/app/shared/interfaces';
 import { PostService } from 'src/app/shared/services/post.services';
-
-
 @Component({
   selector: 'app-post-page',
   templateUrl: './post-page.component.html',
-  styleUrls: ['./post-page.component.scss']
+  styleUrls: ['./post-page.component.scss'],
 })
 export class PostPageComponent implements OnInit {
 

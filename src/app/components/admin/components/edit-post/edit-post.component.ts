@@ -10,7 +10,7 @@ import { PostService } from './../../../../shared/services/post.services';
 @Component({
   selector: 'app-edit-post',
   templateUrl: './edit-post.component.html',
-  styleUrls: ['./edit-post.component.scss']
+  styleUrls: ['./edit-post.component.scss'],
 })
 export class EditPostComponent implements OnInit, OnDestroy {
 
@@ -78,13 +78,6 @@ export class EditPostComponent implements OnInit, OnDestroy {
     })
   }
 
-  // removePosts(event: Event, postId: any) {
-  //   event?.preventDefault()
-  //   this.subDelete = this.postService.removePost(postId).subscribe(()=> {
-  //     this.router.navigate(['/admin', 'dashboard'])
-  //   })
-  // }
-
   removePosts(event: Event, postId: any) {
     event?.preventDefault()
     this.postService.openPopupConfirm$.next(true)
@@ -107,7 +100,5 @@ export class EditPostComponent implements OnInit, OnDestroy {
     if(this.subConfirm) {
       this.subConfirm.unsubscribe()
     }
-
   }
-
 }
